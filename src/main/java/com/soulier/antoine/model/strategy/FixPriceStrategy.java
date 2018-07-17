@@ -1,12 +1,10 @@
-package com.soulier.antoine.model.strategy.impl;
-
-import com.soulier.antoine.model.strategy.IPricingStrategy;
+package com.soulier.antoine.model.strategy;
 
 /**
  * FixPriceStrategy - supermarket-kata
  * Created by soulierantoine on 17/07/2018
  */
-public class FixPriceStrategy implements IPricingStrategy {
+public class FixPriceStrategy extends IPricingStrategy {
 
     private float price;
 
@@ -15,7 +13,7 @@ public class FixPriceStrategy implements IPricingStrategy {
     }
 
     @Override
-    public float getPrice() {
+    public float getProductPrice() {
         return price;
     }
 }

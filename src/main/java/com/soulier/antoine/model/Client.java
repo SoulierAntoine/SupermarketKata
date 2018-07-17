@@ -37,6 +37,7 @@ public class Client {
 
     public void purchase(Product product, int quantity) {
 
+        product.getPricingStrategy().setQuantity(quantity);
         for (int i = 0; i < quantity; ++i) {
             purchase(product);
         }

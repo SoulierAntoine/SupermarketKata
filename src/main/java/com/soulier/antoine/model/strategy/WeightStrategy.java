@@ -1,7 +1,5 @@
-package com.soulier.antoine.model.strategy.impl;
+package com.soulier.antoine.model.strategy;
 
-import com.soulier.antoine.model.Product;
-import com.soulier.antoine.model.strategy.IPricingStrategy;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class WeightStrategy implements IPricingStrategy {
+public class WeightStrategy extends IPricingStrategy {
 
     private float pricePerOunce;
     private float productWeight;
@@ -23,7 +21,7 @@ public class WeightStrategy implements IPricingStrategy {
     }
 
     @Override
-    public float getPrice() {
+    public float getProductPrice() {
         return productWeight * pricePerOunce;
     }
 }

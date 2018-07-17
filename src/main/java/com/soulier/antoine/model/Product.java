@@ -33,6 +33,6 @@ public class Product {
         if (pricingStrategy == null) {
             throw new Exception("You have to set a pricing strategy first.");
         }
-        return pricingStrategy.getPrice();
+        return pricingStrategy.getProductPrice();
     }
 }

@@ -2,7 +2,7 @@ package com.soulier.antoine;
 
 import com.soulier.antoine.model.Client;
 import com.soulier.antoine.model.Product;
-import com.soulier.antoine.model.strategy.impl.FixPriceStrategy;
+import com.soulier.antoine.model.strategy.FixPriceStrategy;
 import cucumber.api.java8.En;
 import org.junit.Assert;
 

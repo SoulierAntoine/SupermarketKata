@@ -1,4 +1,4 @@
-# Is not taken into account for this kata : the stock management, the client management and the different products categories.
+# Is not taken into account for this kata : the stock management, the measurement unit (gram, ounces...), the client fidelity and the product categories.
 # Because of configuration issues with cucumber taking too long, most of the tests are unit tests located in src/test/java.
 
 Feature: Pricing goods strategy
@@ -12,7 +12,7 @@ Feature: Pricing goods strategy
         Then he pays 3.00 USD
 
     # Scenario: Price depends on weight
-    #    Given I have a product costing 2.00 USD per pound
+    #    Given I have a product costing 1.00 USD per pound
     #    When a client purchase 10 ounces of this product
     #    Then he pays 1.25 USD
 

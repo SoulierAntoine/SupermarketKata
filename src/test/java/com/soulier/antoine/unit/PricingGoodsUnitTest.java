@@ -2,10 +2,10 @@ package com.soulier.antoine.unit;
 
 import com.soulier.antoine.model.Client;
 import com.soulier.antoine.model.Product;
-import com.soulier.antoine.model.strategy.impl.FixPriceStrategy;
-import com.soulier.antoine.model.strategy.impl.SeveralPurchaseFreeStrategy;
-import com.soulier.antoine.model.strategy.impl.WeightStrategy;
-import com.soulier.antoine.model.strategy.impl.SeveralPurchaseReductionStrategy;
+import com.soulier.antoine.model.strategy.FixPriceStrategy;
+import com.soulier.antoine.model.strategy.SeveralPurchaseFreeStrategy;
+import com.soulier.antoine.model.strategy.SeveralPurchaseReductionStrategy;
+import com.soulier.antoine.model.strategy.WeightStrategy;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -50,14 +50,14 @@ public class PricingGoodsUnitTest {
 
         // Given
         Product p = new Product("apple", 0.5F);
-        p.setPricingStrategy(new SeveralPurchaseReductionStrategy());
+        p.setPricingStrategy(new SeveralPurchaseReductionStrategy(10.0F, 1.0F, 3));
         Client c = new Client();
 
         // When
         c.purchase(p, 3);
 
         // Then
-        Assert.assertEquals(2.5, c.getDebt(), 0.0);
+        Assert.assertEquals(2.7, c.getDebt(), 0.1);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class PricingGoodsUnitTest {
 
         // Given
         Product p = new Product("apple", 0.5F);
-        p.setPricingStrategy(new SeveralPurchaseFreeStrategy());
+        p.setPricingStrategy(new SeveralPurchaseFreeStrategy(1.0F, 1, 3));
         Client c = new Client();
 
         // When
