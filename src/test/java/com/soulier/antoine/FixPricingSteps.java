@@ -24,7 +24,13 @@ public class FixPricingSteps implements En {
             client = new Client();
         });
 
-        When("^a client purchase (\\d+) product$", (Integer arg) -> client.purchase(product, arg));
+        When("^a client purchase (\\d+) product$", (Integer arg) -> {
+            try {
+                client.purchase(product, arg);
+            } catch (Exception e) {
+                throw new AssertionError(e.getMessage());
+            }
+        });
 
         Then("^he pays (.+) USD$", (Float arg) -> Assert.assertEquals(client.getDebt(), arg, 0.0));
     }

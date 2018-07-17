@@ -15,6 +15,18 @@ import org.junit.Test;
  */
 public class PricingGoodsUnitTest {
 
+    @Test(expected = Exception.class)
+    public void noPricingStrategy() throws Exception {
+        // Given
+        Product p = new Product("apple", 0.5F);
+        Client c = new Client();
+
+        // When
+        c.purchase(p, 10);
+
+        // Then an exception has been thrown
+    }
+
     @Test
     public void fixPrice() {
 
@@ -24,7 +36,11 @@ public class PricingGoodsUnitTest {
         Client c = new Client();
 
         // When
-        c.purchase(p, 10);
+        try {
+            c.purchase(p, 10);
+        } catch (Exception e) {
+            throw new AssertionError(e.getMessage());
+        }
 
         // Then
         Assert.assertEquals(10.0, c.getDebt(), 0.0);
@@ -39,7 +55,11 @@ public class PricingGoodsUnitTest {
         Client c = new Client();
 
         // When
-        c.purchase(p, 10);
+        try {
+            c.purchase(p, 10);
+        } catch (Exception e) {
+            throw new AssertionError(e.getMessage());
+        }
 
         // Then
         Assert.assertEquals(7.5, c.getDebt(), 0.0);
@@ -54,7 +74,11 @@ public class PricingGoodsUnitTest {
         Client c = new Client();
 
         // When
-        c.purchase(p, 3);
+        try {
+            c.purchase(p, 3);
+        } catch (Exception e) {
+            throw new AssertionError(e.getMessage());
+        }
 
         // Then
         Assert.assertEquals(2.7, c.getDebt(), 0.1);
@@ -69,7 +93,11 @@ public class PricingGoodsUnitTest {
         Client c = new Client();
 
         // When
-        c.purchase(p, 3);
+        try {
+            c.purchase(p, 3);
+        } catch (Exception e) {
+            throw new AssertionError(e.getMessage());
+        }
 
         // Then
         Assert.assertEquals(2.0, c.getDebt(), 0.0);

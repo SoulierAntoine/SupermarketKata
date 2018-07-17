@@ -27,15 +27,14 @@ public class Client {
     private void purchase(Product product) {
 
         products.add(product);
-        try {
-            debt += product.getPrice();
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-            System.exit(1);
-        }
+        debt += product.getPrice();
     }
 
-    public void purchase(Product product, int quantity) {
+    public void purchase(Product product, int quantity) throws Exception {
+
+        if (product.getPricingStrategy() == null) {
+            throw new Exception("You have to set a pricing strategy first.");
+        }
 
         product.getPricingStrategy().setQuantity(quantity);
         for (int i = 0; i < quantity; ++i) {

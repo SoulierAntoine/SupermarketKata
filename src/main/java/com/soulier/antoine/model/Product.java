@@ -28,11 +28,8 @@ public class Product {
         this.weight = 0.0F;
     }
 
-    public float getPrice() throws Exception {
+    public float getPrice() {
 
-        if (pricingStrategy == null) {
-            throw new Exception("You have to set a pricing strategy first.");
-        }
         return pricingStrategy.getProductPrice();
     }
 }

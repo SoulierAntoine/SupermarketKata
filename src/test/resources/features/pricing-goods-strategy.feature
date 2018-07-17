@@ -1,4 +1,6 @@
-# Is not taken into account for this kata : the stock management, the measurement unit (gram, ounces...), the client fidelity and the product categories.
+# Is not taken into account for this kata : the stock management, the different measurement units (gram, ounces...),
+# the client fidelity, negatives inputs, and product categories.
+# Code coverage is not available in this
 # Because of configuration issues with cucumber taking too long, most of the tests are unit tests located in src/test/java.
 
 Feature: Pricing goods strategy
