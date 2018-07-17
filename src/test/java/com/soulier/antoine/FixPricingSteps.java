@@ -1,7 +1,10 @@
 package com.soulier.antoine;
 
-import cucumber.api.PendingException;
+import com.soulier.antoine.model.Client;
+import com.soulier.antoine.model.Product;
+import com.soulier.antoine.model.strategy.impl.FixPriceStrategy;
 import cucumber.api.java8.En;
+import org.junit.Assert;
 
 /**
  * FixPricingSteps - supermarket-kata
@@ -9,18 +12,20 @@ import cucumber.api.java8.En;
  */
 
 public class FixPricingSteps implements En {
+
+    private Product product;
+    private Client client;
+
     public FixPricingSteps() {
-        Given("^I have a product costing \$(\\d+).(\\d+)$", (Float arg) -> {
-            // Write code here that turns the phrase above into concrete actions
-            throw new PendingException();
+
+        Given("^I have a product costing (.+) USD$", (Float arg) -> {
+            product = new Product();
+            product.setPricingStrategy(new FixPriceStrategy(arg));
+            client = new Client();
         });
-        Then("^a client purchase (\\d+) product$", (Integer arg) -> {
-            // Write code here that turns the phrase above into concrete actions
-            throw new PendingException();
-        });
-        When("^he pays \$(\\d+).(\\d+)$", (Float arg) -> {
-            // Write code here that turns the phrase above into concrete actions
-            throw new PendingException();
-        });
+
+        When("^a client purchase (\\d+) product$", (Integer arg) -> client.purchase(product, arg));
+
+        Then("^he pays (.+) USD$", (Float arg) -> Assert.assertEquals(client.getDebt(), arg, 0.0));
     }
 }
